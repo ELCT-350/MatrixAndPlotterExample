@@ -8,6 +8,53 @@ using namespace std;
 
 int main()
 {
+
+	/*
+     
+	  RLC Circuit:
+
+	                 R1      L1
+	         .------VVVV----UUUU-------.----------.
+	         |                         |          |    +
+	      + ,'.        ------>          >         |             
+	  Vg   (   )         iL         R2  >     C1 ===   vC
+	      - `.'                         >         |    
+	         |                         |          |    -
+	         +-------------------------'----------'
+			_|_
+			 -
+
+	  KVL for inductor current:
+
+      Vg = iL * R1 + iL' * L1 + vC 
+
+	  KCL for capacitor voltage:
+
+	  iL = vC / R2 + vC' * C1
+
+	  Standard form:
+
+	  iL' = -R1/L1 * iL - 1/L1 * vC + 1/L1 * Vg
+	  vC' = 1/C1 * iL - 1/(R2*C1) * vC  
+
+	  Vectors:
+
+	  x = [ iL  vC ]T
+	  u = [Vg]
+	  y = [ iL  vC ]T
+
+	  State Equation (x' = A * x + B * u):
+
+	  [ iL' ]   =  [ -R1/L1   -1/L1      ]  *  [ iL ]  +  [  1/L  ] * Vg
+	  [ vC' ]      [   1/C1   -1/(R2*C1) ]     [ vC ]  +  [  0    ]
+
+	  Output Equation (y = C * x + D * u):
+
+	  [ iL ]   =  [ 1  0 ]  *  [ iL ]  +  [ 0 ] * Vg
+	  [ vC ]      [ 0  1 ]     [ vC ]  +  [ 0 ]
+
+	*/
+
 	const double tmax = 10.0;
 	const double h = 0.01;
 
